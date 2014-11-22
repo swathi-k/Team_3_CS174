@@ -10,15 +10,15 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS cs174;
-USE cs174;
+CREATE DATABASE IF NOT EXISTS myvideos;
+USE myvideos;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `cs174`
+-- Database: `myvideos`
 --
 
 -- --------------------------------------------------------
