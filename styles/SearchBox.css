@@ -1,0 +1,67 @@
+@CHARSET "ISO-8859-1";
+
+body {
+    background-color: #2F3239;
+}
+
+
+input {
+    height:28px;
+    border:none;
+}
+
+input[type="submit"]{
+    border:none;
+    background-color:#000066;
+    height:28px;
+    color:#fff;
+    font-size:18px;
+    margin:0px;
+}
+
+input[type="submit"]:hover{
+    background-color:#ADAFB2;
+}
+
+
+#results {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results td, #results th {
+    font-size: 1em;
+    background: #F0F0F2;
+    padding: 3px 7px 2px 7px;
+}
+
+#results th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #A7C942;
+    color: #ffffff;
+}
+
+#results2 tr.alt td td#description {
+    background-color: #FF0000;
+}
+
+#results tr.alt td {
+    color: #000000;
+    background-color: #F0F0F2;
+}
+
+
+
+select {
+   
+   width: 150px;
+   padding: 5px;
+   font-size: 16px;
+   border:none;
+   height: 34px;
+    -webkit-appearance: none;
+} 

@@ -1,0 +1,80 @@
+<html>
+<body>
+<!-- File   : index.html
+   Subject: Bonus Homework
+   Authors: Swathi Kotturu
+   Version: 1.2
+   Date   : Nov. 9, 2014
+   Description: Start up page view videos
+   Usage: Create a database named cs160 and load guestbook.mysql into it before using this example
+     -->
+<a href="entervideo.php">Enter a video into the dbs!</a>
+<br><br>
+
+
+ <form method=post action="search3.php">
+
+   Enter Keyword: <input type="text" size="25" min="1" maxlength="50" name="keyword">
+   <br><br>
+
+   <input type="submit" name="submit" value="Enter"> 
+   <br><br>
+   or:
+   <br><br>
+
+	Highest Resolution: 
+   <select name="hresolution">
+   <option value="">Select One</option>
+   <option value="144">144p</option>
+   <option value="240">240p</option>
+   <option value="360">360p</option>
+   <option value="480">480p</option>
+   <option value="720">720p</option>
+   <option value="1080">1080p</option>
+   </select>
+   <br><br>
+   
+   View Length: 
+   <select name="vlength">
+   <option value="" selected>Select One</option>
+   <option value="0,5">0 - 5 min</option>
+   <option value="10,20">10 - 20 min</option>
+   <option value="20,40">20 - 40 min</option>
+   <option value="40,60">40 - 60 min</option>
+   <option value="60,">1+ hour</option>
+   </select>
+   <br><br>
+   
+   Language: 
+   <input type="radio" value="English" name="language">English
+   <input type="radio" value="Non-English" name="language">Non-English
+   <br><br>
+   
+   View Count: 
+   <select name="vcount">
+   <option value="" selected>Select One</option>
+   <option value="50000,75000">50,000 - 75,000</option>
+   <option value="75001,100000">75,001 - 100,000</option>
+   <option value="100001,125000">100,001 - 125,000</option>
+   <option value="125001,150000">125,001 - 150,000</option>
+   <option value="150000,">150,000+</option>
+   </select>
+   <br><br>
+   
+   Video type: 
+   <select name="vtypes">
+   <option value="" selected>Select One</option>
+   <option value="Tutorial">Tutorial</option>
+   <option value="Entertainment">Entertainment</option>
+   <option value="Application">Application</option>
+   <option value="Weapon">Weapon</option>
+   <option value="Group demo">Group demo</option>
+   <option value="Others">Others</option>
+   </select>
+   <br><br>
+      
+   <input type="submit" name="submit" value="Enter">
+</form>
+   
+</body>
+</html>
