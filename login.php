@@ -45,7 +45,7 @@
 			if ($cook === "yes")
 			{
 				$month = time() + 3600 * 24 * 30;
-				setcookie("user", $uid, $month);
+				setcookie("uid", $uid, $month);
 				setcookie("pwrd", $pwrd, $month);
 			}
 			
@@ -63,11 +63,13 @@
 	
 	elseif (isset($_COOKIE["user"]) && isset($_COOKIE["pwrd"]))
 	{
-		if ($_COOKIE["user"] != '')
+		if ($_COOKIE["uid"] != '')
 		{
 			if ($_COOKIE["pwrd"] != '')
 			{
 				print("<br><h3>Login saved via cookies!</h3>Redirecting in 5 seconds...");
+				$_SESSION["uid"] = $_COOKIE["uid"];
+				$_SESSION["pwrd"] = $_COOKIE["pwrd"];
 				header("refresh:5;url=./index.php");
 			}
 		}
