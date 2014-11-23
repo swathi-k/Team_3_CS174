@@ -46,7 +46,7 @@
 			{
 				$month = time() + 3600 * 24 * 30;
 				setcookie("user", $uid, $month);
-				setcookie("pwrd", $uid, $month);
+				setcookie("pwrd", $pwrd, $month);
 			}
 			
 			print("<br><h3>Login successful!</h3>Redirecting in 5 seconds...");
