@@ -42,7 +42,7 @@
 <div>
 <form method="post">
 	Username: <input class="uname" type="text" name="uid"><br>
-	Password: <input class="uname" type="text" name="pwrd"><br>
+	Password: <input class="uname" type="password" name="pwrd"><br>
 	Use Cookies? Yes<input type="radio" name="cook" value="yes">
 				 No<input type="radio" name="cook" value="no" checked><br>
 
@@ -51,18 +51,11 @@
 
 
 <?php 
-	include "dbconnect.php";
-	
-	function error()
+	function checkInfo($uid, $pwrd)
 	{
-		print("<h3>Invalid login info!</h3>");
-	}
-	
-	if (isset($_POST["uid"]) && isset($_POST["pwrd"]) && isset($_POST["cook"]))
-	{
-		$uid = mysql_real_escape_string($_POST["uid"]);
-		$pwrd = mysql_real_escape_string($_POST["pwrd"]);
-		$cook = $_POST["cook"];
+		include "dbconnect.php";
+		$uid = mysql_real_escape_string($uid);
+		$pwrd = mysql_real_escape_string($uid);
 		
 		$query = "SELECT * FROM users WHERE userName='$uid' and passWord='$pwrd'";
 		
@@ -71,39 +64,68 @@
 		if ($result->num_rows == 1)
 		{
 			session_start();
-			
+				
 			$_SESSION["uid"] = $uid;
 			$_SESSION["pwrd"] = $pwrd;
-			
-			if ($cook === "yes")
-			{
-				$month = time() + 3600 * 24 * 30;
-				setcookie("uid", $uid, $month);
-				setcookie("pwrd", $pwrd, $month);
-			}
-			
-			print("<br><h3>Login successful!</h3>Redirecting in 5 seconds...");
-			
-			header("refresh:5; url=./index.php");
+				
+
+			return true;
 		}
 		
 		else
 		{
-			error();
+			return false;
+		}
+	}
+	
+	function clearCookies()
+	{
+		$month = time() + 3600 * 24 * 30;
+		setcookie("uid", '', $month);
+		setcookie("pwrd", '', $month);
+	}
+	
+	if (isset($_POST["uid"]) && isset($_POST["pwrd"]) && isset($_POST["cook"]))
+	{
+		if (checkInfo($_POST["uid"], $_POST["pwrd"]))
+		{
+			print("<br><h3>Login successful!</h3>Redirecting in 5 seconds...");
+			header("refresh:5; url=./index.php");
+			
+			if ($_POST["cook"] === "yes")
+			{
+				$month = time() + 3600 * 24 * 30;
+				setcookie("uid", $_POST["uid"], $month);
+				setcookie("pwrd", $_POST["pwrd"], $month);
+			}
+			
+			else 
+			{
+				clearCookies();
+			}
+		}
+		
+		else
+		{
+			print("<h3>Invalid login info!</h3>");
+			clearCookies();
 		}
 		
 	}
 	
 	elseif (isset($_COOKIE["uid"]) && isset($_COOKIE["pwrd"]))
 	{
-		if ($_COOKIE["uid"] != '')
+		if ($_COOKIE["uid"] !== '' && $_COOKIE["pwrd"] !== '')
 		{
-			if ($_COOKIE["pwrd"] != '')
+			if (checkInfo($_COOKIE["uid"], $_COOKIE["pwrd"]))
 			{
 				print("<br><h3>Login saved via cookies!</h3>Redirecting in 5 seconds...");
-				$_SESSION["uid"] = $_COOKIE["uid"];
-				$_SESSION["pwrd"] = $_COOKIE["pwrd"];
 				header("refresh:5;url=./index.php");
+			}
+			
+			else
+			{
+				print("<h3>Invalid cookie info.<br>Please clean your cookies and log in as a valid user.</h3>");
 			}
 		}
 	}
