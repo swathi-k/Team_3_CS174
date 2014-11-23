@@ -22,6 +22,12 @@
 			Wing Chun
 		</li> 
 		<li id="link">
+			<a href="./index.php">Home</a>
+		</li>
+		<li id="link">
+			<a href="./login.php">Login</a>
+		</li>
+		<li id="link">
 			<a href="register.php">Create an Account!</a>
 		</li>
   		<li id="link">
@@ -31,8 +37,7 @@
 			<input type="text" minlength="1" placeholder="Search by Keyword..." name="keyword">
     		<input type="submit" name="submit" value="Enter">
 		</li>
-	</ul>	
-	</form>
+	</ul></form>
      
 </div>
 

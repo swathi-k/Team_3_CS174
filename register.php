@@ -22,6 +22,12 @@ include('dbconnect.php');
 	<ul>
 		<li id="title">
 			Wing Chun
+		</li>
+		<li id="link">
+			<a href="./index.php">Home</a>
+		</li>
+		<li id="link">
+			<a href="./login.php">Login</a>
 		</li> 
 		<li id="link">
 			<a href="register.php">Create an Account!</a>
