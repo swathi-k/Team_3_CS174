@@ -78,7 +78,8 @@
 		}
 	}
 	
-	function clearCookies()
+	//if called without any parameters it will clear cookies
+	function setCookies($uid = '', $pwrd = '')
 	{
 		$month = time() + 3600 * 24 * 30;
 		setcookie("uid", '', $month);
@@ -94,21 +95,19 @@
 			
 			if ($_POST["cook"] === "yes")
 			{
-				$month = time() + 3600 * 24 * 30;
-				setcookie("uid", $_POST["uid"], $month);
-				setcookie("pwrd", $_POST["pwrd"], $month);
+				setCookies($_POST["uid"], $_POST["pwrd"]);
 			}
 			
 			else 
 			{
-				clearCookies();
+				setCookies();
 			}
 		}
 		
 		else
 		{
 			print("<h3>Invalid login info!</h3>");
-			clearCookies();
+			setCookies();
 		}
 		
 	}
