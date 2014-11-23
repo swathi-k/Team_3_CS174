@@ -10,6 +10,15 @@ input {
     border:none;
 }
 
+.uname{
+    border:none;
+    background-color:#000066;
+    height:28px;
+    color:#fff;
+    font-size:18px;
+    margin:0px;
+}
+
 input[type="submit"]{
     border:none;
     background-color:#000066;

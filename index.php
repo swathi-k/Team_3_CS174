@@ -21,6 +21,9 @@
 		<li id="title">
 			Wing Chun
 		</li> 
+		<li id="link">
+			<a href="register.php">Create an Account!</a>
+		</li>
   		<li id="link">
 			<a href="entervideo.php">Enter a video into the dbs!</a>
 		</li>
