@@ -2,20 +2,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles/SearchBox.css">
+<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+<link rel="stylesheet" type="text/css" href="styles/registerbox.css">
+
+<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Amaranth:700' rel='stylesheet' type='text/css'>
 <title>Login</title>
 </head>
 <body>
 
-<h1>Please Log In</h1>
+<div id="hmenu"> 
+	
+	<form method=post action="index.php">
+	<ul>
+		<li id="title">
+			Wing Chun
+		</li> 
+		<li id="link">
+			<a href="register.php">Create an Account!</a>
+		</li>
+  		<li id="link">
+			<a href="entervideo.php">Enter a video into the dbs!</a>
+		</li>
+		<li id="search">
+			<input type="text" minlength="1" placeholder="Search by Keyword..." name="keyword">
+    		<input type="submit" name="submit" value="Enter">
+		</li>
+	</ul>	
 
+<h1>Please Log In</h1>
+<div>
 <form method="post">
-	Username: <input type="text" name="uid"><br>
-	Password: <input type="text" name="pwrd"><br>
+	Username: <input class="uname" type="text" name="uid"><br>
+	Password: <input class="uname" type="text" name="pwrd"><br>
 	Use Cookies? Yes<input type="radio" name="cook" value="yes">
 				 No<input type="radio" name="cook" value="no" checked><br>
 
 	<input type="submit" value="Login">
 </form>
+
 
 <?php 
 	include "dbconnect.php";
@@ -61,7 +87,7 @@
 		
 	}
 	
-	elseif (isset($_COOKIE["user"]) && isset($_COOKIE["pwrd"]))
+	elseif (isset($_COOKIE["uid"]) && isset($_COOKIE["pwrd"]))
 	{
 		if ($_COOKIE["uid"] != '')
 		{
@@ -76,6 +102,7 @@
 	}
 	
 ?>
+</div>
 
 </body>
 </html>
