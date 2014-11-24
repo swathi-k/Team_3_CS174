@@ -196,8 +196,9 @@ data="http://www.youtube.com/v/g4fKTwi1F_o">
 
 	if (isset($_GET['subquery'])) {
 		$subquery = $_GET['subquery'];
-		
+	
 	}
+	
 	
 	$subquery = str_replace("\\", "",$subquery);
 	
@@ -369,7 +370,7 @@ data="http://www.youtube.com/v/g4fKTwi1F_o">
 	
 	/* Get data. */
 	
-	$sql = "SELECT title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag FROM $tbl_name WHERE $subquery LIMIT $start, $limit";
+	$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag FROM $tbl_name WHERE $subquery LIMIT $start, $limit";
 	//$sql = "SELECT id FROM $tbl_name LIMIT $start, $limit";
 	$result = mysqli_query($conn, $sql);
 	
@@ -464,8 +465,38 @@ data="http://www.youtube.com/v/g4fKTwi1F_o">
 		$pagination.= "</div>\n";		
 	}
 
-	print "<table style=\"width:100%\" id=\"results2\">Search Results:<br>";
 	
+
+		if ($result->num_rows < 1)
+		{
+
+			print "<table style=\"width:100%\" id=\"results2\">Favorite Videos:<br>";
+
+			/* Get data. */
+			$_SESSION["uid"] = "Alice";
+
+
+
+
+
+
+			$username = $_SESSION["uid"];
+
+				
+
+			$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag FROM favorites INNER JOIN fun_video ON favorites.vId=fun_video.id WHERE favorites.userName = '$username' LIMIT $start, $limit";
+
+			$result = mysqli_query($conn, $sql);
+
+		}
+		else {
+			print "<table style=\"width:100%\" id=\"results2\">Search Results:<br>";
+
+		}
+
+
+
+
 		while($row = mysqli_fetch_array($result))
 		{
 	
@@ -476,6 +507,13 @@ data="http://www.youtube.com/v/g4fKTwi1F_o">
 		print "<br>";
 		print "<a href=\"{$row['videolink']}\"><img src=\"{$row['iconimage']}\" height=\"100\" width=\"160\"></a>";
 		print "</td>";
+
+		print "<td>";
+		print "<form action=\"favorite.php\" method=\"post\">";
+		print "<input type=\"submit\" name=\"favorite\" value=\"{$row['id']}\"/>";
+		print "</form>";
+		print "</td>";
+
 		print "<td id=\"description\">";
 		print "<b>Description:</b>";
 		print $row["description"];
