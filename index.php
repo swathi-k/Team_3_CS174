@@ -508,11 +508,13 @@ data="http://www.youtube.com/v/g4fKTwi1F_o">
 		print "<a href=\"{$row['videolink']}\"><img src=\"{$row['iconimage']}\" height=\"100\" width=\"160\"></a>";
 		print "</td>";
 
+
 		print "<td>";
 		print "<form action=\"favorite.php\" method=\"post\">";
-		print "<input type=\"submit\" name=\"favorite\" value=\"{$row['id']}\"/>";
+		print "<input type=\"image\" src=\"http://pngimg.com/upload/star_PNG1595.png\" name=\"favorite\" value=\"{$row['id']}\"/>";
 		print "</form>";
 		print "</td>";
+
 
 		print "<td id=\"description\">";
 		print "<b>Description:</b>";
