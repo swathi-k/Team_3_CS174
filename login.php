@@ -33,7 +33,7 @@
 		$uid = mysql_real_escape_string($uid);
 		$pwrd = mysql_real_escape_string($pwrd);
 		
-		$query = "SELECT * FROM users WHERE userName='$uid' and passWord='$pwrd'";
+		$query = "SELECT * FROM `users` WHERE userName='$uid' and passWord='$pwrd'";
 		
 		$result = $conn->query($query);
 		
