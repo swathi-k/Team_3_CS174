@@ -16,7 +16,7 @@ include("dbconnect.php");
 
 
 
-		$_SESSION["uid"] = "Alice";
+		//$_SESSION["uid"] = "Alice";
 
 
 

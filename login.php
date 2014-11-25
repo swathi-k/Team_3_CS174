@@ -12,31 +12,7 @@
 </head>
 <body>
 
-<div id="hmenu"> 
-	
-	<form method=post action="index.php">
-	<ul>
-		<li id="title">
-			Wing Chun
-		</li> 
-		<li id="link">
-			<a href="./index.php">Home</a>
-		</li>
-		<li id="link">
-			<a href="./login.php">Login</a>
-		</li>
-		<li id="link">
-			<a href="register.php">Create an Account!</a>
-		</li>
-  		<li id="link">
-			<a href="entervideo.php">Enter a video into the dbs!</a>
-		</li>
-		<li id="search">
-			<input type="text" minlength="1" placeholder="Search by Keyword..." name="keyword">
-    		<input type="submit" name="submit" value="Enter">
-		</li>
-	</ul>
-	</form>
+<?php include("menu.php");?>
 
 <h1>Please Log In</h1></form>
 <div>
@@ -63,10 +39,8 @@
 		
 		if ($result->num_rows == 1)
 		{
-			session_start();
 				
 			$_SESSION["uid"] = $uid;
-			$_SESSION["pwrd"] = $pwrd;
 				
 
 			return true;
@@ -82,8 +56,8 @@
 	function setCookies($uid = '', $pwrd = '')
 	{
 		$month = time() + 3600 * 24 * 30;
-		setcookie("uid", '', $month);
-		setcookie("pwrd", '', $month);
+		setcookie("uid", $uid, $month);
+		setcookie("pwrd", $pwrd, $month);
 	}
 	
 	if (isset($_POST["uid"]) && isset($_POST["pwrd"]) && isset($_POST["cook"]))
