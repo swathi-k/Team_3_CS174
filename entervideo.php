@@ -8,7 +8,7 @@
 */
 include("dbconnect.php"); ?>
 
-<h2>Enter a video into the Database!!!</h2>
+<h2>Enter a video into the Database!!</h2>
 
  <form method=post action="verify_input.php">
 
