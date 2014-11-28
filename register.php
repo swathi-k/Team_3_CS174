@@ -16,31 +16,7 @@ include('dbconnect.php');
 	</head>
 
 	<body> 
-<div id="hmenu"> 
-	
-	<form method=post action="index.php">
-	<ul>
-		<li id="title">
-			Wing Chun
-		</li>
-		<li id="link">
-			<a href="./index.php">Home</a>
-		</li>
-		<li id="link">
-			<a href="./login.php">Login</a>
-		</li> 
-		<li id="link">
-			<a href="register.php">Create an Account!</a>
-		</li>
-  		<li id="link">
-			<a href="entervideo.php">Enter a video into the dbs!</a>
-		</li>
-		<li id="search">
-			<input type="text" minlength="1" placeholder="Search by Keyword..." name="keyword">
-    		<input type="submit" name="submit" value="Enter">
-		</li>
-	</ul>	
-	</form>
+<?php include("menu.php");?>
 	
 	<div id="register">
 	<form action="verify_account.php" method="post"> <!--SEND TO Verify.php afterwards -->
