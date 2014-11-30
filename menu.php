@@ -12,10 +12,14 @@
 	</li>
 	<li id="link">';
 	
+	
+	
 	$login = '<a href="./login.php">Login</a></li>
 	<li id="link">
 	<a href="register.php">Create an Account!</a>
 	</li>';
+	
+	
 	
 	$logout = '<a href="./logout.php">Logout</a>';
 	
@@ -34,6 +38,9 @@
 	$menu = $menu . '
 	<li id="link">
 	<a href="entervideo.php">Enter a video into the dbs!</a>
+	</li>
+	<li id="link">
+	<a href="verifyTypeAccount.php">Admin Correct Videos</a>
 	</li>
 	<li id="search">
 	<input type="text" minlength="1" placeholder="Search by Keyword..." name="keyword">

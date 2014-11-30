@@ -13,7 +13,7 @@
 	</head>
 
 	<body> 
-
+<div id="hmenu">
 <?php 
 	include "menu.php";
 ?>

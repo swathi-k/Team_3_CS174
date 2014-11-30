@@ -10,8 +10,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS youthcyb_kotturu;
-USE youthcyb_kotturu;
+CREATE DATABASE IF NOT EXISTS myvideos;
+USE myvideos;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -160,6 +160,11 @@ ALTER TABLE `favorites`
 ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`userName`) REFERENCES `users` (`userName`),
 ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`vId`) REFERENCES `fun_video` (`id`),
 ADD CONSTRAINT `favorites_ibfk_3` UNIQUE (`userName`, `vId`);
+
+--
+-- Need A new field in 'users' indicating whether or not a user is an administrator
+--
+ALTER TABLE `users` ADD `adminBoolean` BOOLEAN NOT NULL DEFAULT FALSE ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -7,8 +7,14 @@
    Description: A web form that collects users' data to write into the guestbook database table
 */
 include("dbconnect.php"); ?>
+<?php 
+	
+	echo "<h2>Enter a video into the Database!</h2>";
 
-<h2>Enter a video into the Database!!</h2>
+		
+
+?>
+<br><br>
 
  <form method=post action="verify_input.php">
 
