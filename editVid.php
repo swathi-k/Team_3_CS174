@@ -128,13 +128,13 @@
 	
 		if ($language === 'English')
 		{	
-			echo "<input type=\"radio\" name=\"language\" value=\"english\" checked> English" ;
-			echo "<input type=\"radio\" name=\"language\" value=\"nonenglish\"> Non-English" ;
+			echo "<input type=\"radio\" name=\"language\" value=\"English\" checked>English" ;
+			echo "<input type=\"radio\" name=\"language\" value=\"Non-English\">Non-English" ;
 		}
 		else /*  Else make the checked button nonenglish */
 		{
-			echo "<input type=\"radio\" name=\"language\" value=\"english\"> English" ;
-			echo "<input type=\"radio\" name=\"language\" value=\"nonenglish\" checked> Non-English" ;
+			echo "<input type=\"radio\" name=\"language\" value=\"English\"> English" ;
+			echo "<input type=\"radio\" name=\"language\" value=\"Non-English\" checked> Non-English" ;
 			
 		}
 		echo "<br><br>";
