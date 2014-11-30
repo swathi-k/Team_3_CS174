@@ -2,13 +2,13 @@
 <html>
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="http://www.sjsu-cs.org/classes/cs174/sec1/kotturu/styles/SearchBox.css">
-		<link rel="stylesheet" type="text/css" href="http://www.sjsu-cs.org/classes/cs174/sec1/kotturu/styles/Navbar.css">
+		<link rel="stylesheet" type="text/css" href="styles/SearchBox.css">
+		<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
 
 		<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Amaranth:700' rel='stylesheet' type='text/css'>
 	
-		<link rel="stylesheet" href="http://www.sjsu-cs.org/classes/cs174/sec1/kotturu/styles/slideshow.css" />
+		<link rel="stylesheet" href="styles/slideshow.css" />
 
 	</head>
 

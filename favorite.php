@@ -14,20 +14,23 @@ include("dbconnect.php");
 		array_push($_SESSION["favorite"], $_POST["favorite"]);
 	
 
-
-
-		//$_SESSION["uid"] = "Alice";
-
-
-
-
 		$user = $_SESSION["uid"];
-		$fav = $_POST["favorite"];
-		$query = "INSERT INTO `youthcyb_kotturu`.`favorites` (`userName`, `vId`) VALUES ('$user', '$fav');";
-		$result = $conn->query($query); 
+
+		if(empty($user)) {
+			include("login.php");			
+		} else {
+			$fav = $_POST["favorite"];
+			$query = "INSERT INTO `youthcyb_kotturu`.`favorites` (`userName`, `vId`) VALUES ('$user', '$fav');";
+			$result = $conn->query($query); 
+			include("index.php");
+		}
+	}
+	else {
+			include("index.php");
+
+
 	}
 
-include("index.php");
 
 
 ?>

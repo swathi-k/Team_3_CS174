@@ -4,9 +4,6 @@
 	
 	<form method=post action="index.php">
 	<ul>
-	<li id="title">
-	Wing Chun
-	</li>
 	<li id="link">
 	<a href="./index.php">Home</a>
 	</li>
@@ -47,7 +44,8 @@
 	<input type="submit" name="submit" value="Enter">
 	</li>
 	</ul>
-	</form>';
+	</form>
+	</div>';
 	
 	print ($menu);
 

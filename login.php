@@ -12,41 +12,24 @@
 </head>
 <body>
 
-<div id="hmenu"> 
-	
-	<form method=post action="index.php">
-	<ul>
-		<li id="title">
-			Wing Chun
-		</li> 
-		<li id="link">
-			<a href="./index.php">Home</a>
-		</li>
-		<li id="link">
-			<a href="./login.php">Login</a>
-		</li>
-		<li id="link">
-			<a href="register.php">Create an Account!</a>
-		</li>
-  		<li id="link">
-			<a href="entervideo.php">Enter a video into the dbs!</a>
-		</li>
-		<li id="search">
-			<input type="text" minlength="1" placeholder="Search by Keyword..." name="keyword">
-    		<input type="submit" name="submit" value="Enter">
-		</li>
-	</ul>
-	</form>
+<?php 
+	include "menu.php";
+?>
 
+<div style="background-color:#ffffff;text-align:center">
+<br>
 <h1>Please Log In</h1></form>
-<div>
+
 <form method="post">
 	Username: <input class="uname" type="text" name="uid"><br>
+	<br><br>
 	Password: <input class="uname" type="password" name="pwrd"><br>
+	<br>
 	Use Cookies? Yes<input type="radio" name="cook" value="yes">
-				 No<input type="radio" name="cook" value="no" checked><br>
+				 No<input type="radio" name="cook" value="no" checked><br><br>
 
 	<input type="submit" value="Login">
+<br>
 </form>
 
 
