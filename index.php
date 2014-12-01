@@ -444,10 +444,10 @@ data="http://www.youtube.com/v/7WA4V5RE8As">
 		$pagination.= "</div>\n";		
 	}
 
-	
 
 		if ($result->num_rows < 1)
 		{
+
 
 			print "<table style=\"width:100%\" id=\"results2\">Favorite Videos:<br>";
 
@@ -460,11 +460,11 @@ data="http://www.youtube.com/v/7WA4V5RE8As">
 
 			$username = $_SESSION["uid"];
 
-				
 
-			$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag FROM favorites INNER JOIN fun_video ON favorites.vId=fun_video.id WHERE favorites.userName = '$username' LIMIT $start, $limit";
+			$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag FROM favorites INNER JOIN fun_video ON favorites.vId=fun_video.id WHERE favorites.userName = '$username' LIMIT $start, 4";
 
 			$result = mysqli_query($conn, $sql);
+
 
 		}
 		else {
