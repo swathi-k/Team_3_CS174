@@ -173,7 +173,8 @@ data="http://www.youtube.com/v/7WA4V5RE8As">
 	// How many adjacent pages should be shown on each side?
 	$adjacents = 3;
 
-	if (isset($_GET['subquery'])) {
+	if (isset($_GET['subquery'])) 
+	{
 		$subquery = $_GET['subquery'];
 	
 	}

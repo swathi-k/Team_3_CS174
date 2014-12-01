@@ -17,7 +17,7 @@ include('dbconnect.php');
 
 	<body> 
 <?php include("menu.php");?>
-	
+	<h1 align = "center" style="color:white";>Account registration</h1>
 	<div id="register" style="background-color:#ffffff">
 	<form action="verify_account.php" method="post"> <!--SEND TO Verify.php afterwards -->
         <table align="center">
