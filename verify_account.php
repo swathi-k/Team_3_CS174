@@ -8,6 +8,7 @@ $empty_error = false;
 $password_error = false;
 $similar_error = false;
 $password_length = false;
+$emailerror = false;
 
 if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password2']))
 {
@@ -31,11 +32,16 @@ else if(!$container)
 {
 	$password_error = true;
 }
-$query = "select hID, eID from users where username = '$username' ";
+$query = "select userName from users where userName = '$username' ";
 $result = mysqli_query($conn, $query);
-if($result)
+while($row = mysqli_fetch_array($result))
 {
-	$uname_error = true;
+	if($row['userName'] == $username)
+	{$uname_error = true;}
+}
+if (!filter_var($username, FILTER_VALIDATE_EMAIL)) 
+{
+	$emailerror = true;
 }
 
 ?>
@@ -77,6 +83,8 @@ if($result)
 	<p>Do not leave any fields blank. Please try to register again.</p>
 	<?elseif($password_length):?>
 	<p>You must have a password longer than 8 characters. Please try to register again.</p>
+	<?elseif($emailerror):?>
+	<p>Please enter a correct email address</p>
 	<?elseif($similar_error):?>
 	<p>You must enter the same password in both fields. Please try to register again.</p>
 	<?elseif($password_error):?>

@@ -22,7 +22,7 @@ include('dbconnect.php');
 	<form action="verify_account.php" method="post"> <!--SEND TO Verify.php afterwards -->
         <table align="center">
 			<tr>
-            	<td><label class="formtext">User Name: </label></td>
+            	<td><label class="formtext">Email: </label></td>
 				<td><input class = "uname" type="text" name="username" size=20" /></td>
             </tr>
             <tr>
