@@ -35,25 +35,11 @@
 		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
 		
 		<div class="container">
-			<div class="c_slider"></div>
-			<div class="slider">
-				<figure>
-					<img src="https://i.ytimg.com/vi_webp/x9ZRjIiNzhM/mqdefault.webp" alt="" width="640" height="310" />
-					<figcaption>The Mirror of Souls</figcaption>
-				</figure><!--
-				--><figure>
-					<img src="https://i.ytimg.com/vi_webp/yAzFc3UJrf4/mqdefault.webp" alt="" width="640" height="310" />
-					<figcaption>Let's cross that bridge when we come to it</figcaption>
-				</figure><!--
-				--><figure>
-					<img src="https://i.ytimg.com/vi_webp/_rlYLR1hUjg/mqdefault.webp" alt="" width="640" height="310" />
-					<figcaption>It's time</figcaption>
-				</figure><!--
-				--><figure>
-					<img src="https://i.ytimg.com/vi/YtVwGWQfDII/mqdefault.jpg" alt="" width="640" height="310" />
-					<figcaption>Walking Life</figcaption>
-				</figure>
-			</div>
+		<div>
+		<button class="browse-button" id="prev-button">prev</button>
+		<button class="browse-button" id="prev-button">next</button></div>
+		  <iframe id="ytplayer" frameborder="0" allowfullscreen="1" title="YouTube video player" width="700" height="400" src="https://www.youtube.com/embed/UTucZltO4UM?controls=0&amp;showinfo=1&amp;autoplay=1&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.sjsu-cs.org"></iframe>
+			
 		</div>
 		
 		<span id="timeline"></span>

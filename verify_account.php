@@ -98,7 +98,7 @@ if (!filter_var($username, FILTER_VALIDATE_EMAIL))
 	$res = mysqli_query($conn, $q);
 	if (!$res)
     {
-		die('Invalid query: ' . mysqli_error($conn));
+		die('Oops, something went wrong....');
 	}
 	echo "<p>Successfully added your new account</p>";	
 	?>
