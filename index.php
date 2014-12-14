@@ -19,6 +19,7 @@
 <div id="hmenu">
 <?php 
 	include "menu.php";
+	include('dbconnect.php');
 ?>
      
 </div>
@@ -44,40 +45,41 @@
         </div>
 		
 		
+<?php 
 
-<table id="gallery" style="width:100%">
-<tr>
-<td>
-<object width="220" height="215"
-data="http://www.youtube.com/v/-E0XNRawUYw">
-</object>
-</td>
+	$sql = "SELECT DISTINCT  `videolink` 
+FROM  fun_video";
+	$arrayofvideos = array();
+	$result = mysqli_query($conn, $sql);
+	while($row = mysqli_fetch_array($result))
+	{	
+		$piece = explode("=", $row['videolink']);
+		$arrayofvideos[] = $piece[1];
+	}
+	$buffer = array();
+	print "<table id='gallery' style='width:100%'>";
+	$rand = rand( 0, count($arrayofvideos) - 1);
+	$buffer[] = $rand;
+	for($i = 0; $i < 4; $i++)
+	{
+		while(in_array($rand, $buffer))
+		{
+			$rand = rand( 0, count($arrayofvideos) - 1);
+			
+		}
+		$buffer[] = $rand;
+		print"
+		
+		<td>
+		<object width='220' height='215'
+		data='http://www.youtube.com/v/$arrayofvideos[$rand]'>
+		</object>
+		</td>";
+	}
+print"</table>";
 
-<td>
-<object width="220" height="215"
-data="http://www.youtube.com/v/2FsZyPjsjTA">
-</object>
-</td>
+?>
 
-<td>
-<object width="220" height="215"
-data="http://www.youtube.com/v/2kSM7rEbDk4">
-</object>
-</td>
-
-<td>
-<object width="220" height="215"
-data="http://www.youtube.com/v/3vKLmTNYr_E">
-</object>
-</td>
-
-<td>
-<object width="220" height="215"
-data="http://www.youtube.com/v/7WA4V5RE8As">
-</object>
-</td>
-</tr>
-</table>
 
 
 <table style="width:100%" id="results">
