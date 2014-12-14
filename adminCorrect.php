@@ -1,7 +1,18 @@
+<?php
+	session_start();
+	
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles/SearchBox.css">
+<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+<link rel="stylesheet" type="text/css" href="styles/registerbox.css">
+
+<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Amaranth:700' rel='stylesheet' type='text/css'>
 <title>Videos Edit</title>
 
 <!-- ALL STYLES -->
@@ -10,10 +21,9 @@
 </head>
 			
 <body>
-
+<div style="background-color:#ffffff;text-align:center">
 <?php
-
-	session_start();
+	include "menu.php";
 	if (!isset($_SESSION['uid']))
 	{
 		header('Location: ./index.php');

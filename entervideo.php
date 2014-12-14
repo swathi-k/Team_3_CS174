@@ -6,9 +6,25 @@
    Date   : Nov 9, 2014
    Description: A web form that collects users' data to write into the guestbook database table
 */
-include("dbconnect.php"); ?>
+include("dbconnect.php"); 
+session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles/SearchBox.css">
+<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+<link rel="stylesheet" type="text/css" href="styles/registerbox.css">
+
+<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Amaranth:700' rel='stylesheet' type='text/css'>
+<meta charset="UTF-8">
+<title>Add Video</title>
+<body>
+<div style="background-color:#ffffff">
 <?php 
-	
+	include 'menu.php';
 	echo "<h2>Enter a video into the Database!</h2>";
 
 		
@@ -18,17 +34,17 @@ include("dbconnect.php"); ?>
 
  <form method=post action="verify_input.php">
 
-   Video Title: <input type="text" size="25" min="1" maxlength="50" name="vtitle">
+   Video Title: <input class="uname" type="text" size="25" min="1" maxlength="50" name="vtitle">
    <br><br>
 
-   Video Link: <input type="text" size="25" name="vlink">
+   Video Link: <input class="uname" type="text" size="25" name="vlink">
    <br><br>
 
-   Video Length: <input type="text" size="6" maxlength="6" name="vlength"> mins
+   Video Length: <input class="uname" type="text" size="6" maxlength="6" name="vlength"> mins
    <br><br>
 
    Highest Resolution: 
-   <select name="hresolution">
+   <select class="uname" name="hresolution">
    <option value="144" selected>144p</option>
    <option value="240">240p</option>
    <option value="360">360p</option>
@@ -39,17 +55,17 @@ include("dbconnect.php"); ?>
    (select one)
    <br><br>
    
-   Video Description: <textarea rows="4" cols="25" maxlength="1000" name="vdescr"> </textarea>
+   Video Description: <textarea class="uname" rows="4" cols="25" maxlength="1000" name="vdescr"> </textarea>
    <br><br>
    
    Language: 
-   <select name="language">
-   <option value="English" selected>English</option>
-   <option value="Non-English">Non-English</option>
+   <select class="uname" name="language">
+   <option  value="English" selected>English</option>
+   <option  value="Non-English">Non-English</option>
    </select>
    <br><br>
    
-   View Count: <input type="text" size="8" maxlength="8" name="vcount">
+   View Count: <input class="uname" type="text" size="8" maxlength="8" name="vcount">
    <br><br>
    
    Video type: 
@@ -62,16 +78,16 @@ include("dbconnect.php"); ?>
    <br><br>
    
    Video icon image link:
-   <input type="text" name="iconimg">
+   <input  class="uname" type="text" name="iconimg">
    <br><br>
    
    Tags (keywords about the site separated by commas):
-   <input type="text" name="vtags">
+   <input class="uname" type="text" name="vtags">
    <br><br>
    
    <input type="submit" name="submit" value="Enter"> 
    <br><br>
 
 </form>
-<input type='button' value='Go back'
-                      onclick='self.history.back()' />
+
+</body>

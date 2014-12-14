@@ -1,6 +1,15 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles/SearchBox.css">
+<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+<link rel="stylesheet" type="text/css" href="styles/registerbox.css">
+
+<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Amaranth:700' rel='stylesheet' type='text/css'>
 <meta charset="UTF-8">
 <title>Edit Videos</title>
 
@@ -9,8 +18,10 @@
 <!--<link rel="stylesheet" type="text/css" href="css/adminTable.css" media="screen"> -->
 </head>	
 <body>
+<div style="background-color:#ffffff;text-align:left">
 	<?php
 		include("dbconnect.php");
+		include "menu.php";
 		$vidID = $_POST["id"];
 		
 		$tbl_name = "fun_video";
@@ -45,19 +56,19 @@
 		
 		//start of form
 		echo "<form action=\"verify_vidInput.php\" method =\"post\">";
-		echo "<input type= \"hidden\" name= \"videoID\" value= \"$vidID\">";
+		echo "<input class=\"uname\" type= \"hidden\" name= \"videoID\" value= \"$vidID\">";
 		echo "<p><b>Title:  </b>";
 		echo "$vidTitle </p>";
 		print "    ";
 		echo "<br>";
 		echo "New Title:  ";
-		echo "<input type=\"text\" value=\"$vidTitle\" size=\"45\" maxlength = \"80\" name = \"vtitle\" >";
+		echo "<input class=\"uname\" type=\"text\" value=\"$vidTitle\" size=\"45\" maxlength = \"80\" name = \"vtitle\" >";
 		echo "<br>";
 		
 		echo "<p><b>Length:</b> $vidLength  ";
 		
 		
-		echo "New Length <select name=\"vlength\"> ";
+		echo "New Length <select class=\"uname\" name=\"vlength\"> ";
 		
 			for ($i = 1; $i<=30; $i++)
 			{
@@ -79,7 +90,7 @@
 		?>
 		
 		
-		<select name="hresolution">
+		<select class="uname" name="hresolution">
    		
    		<?php
    			if ($res == 144 )
@@ -128,18 +139,18 @@
 	
 		if ($language === 'English')
 		{	
-			echo "<input type=\"radio\" name=\"language\" value=\"English\" checked>English" ;
-			echo "<input type=\"radio\" name=\"language\" value=\"Non-English\">Non-English" ;
+			echo "<input class=\"uname\" type=\"radio\" name=\"language\" value=\"English\" checked>English" ;
+			echo "<input class=\"uname\" type=\"radio\" name=\"language\" value=\"Non-English\">Non-English" ;
 		}
 		else /*  Else make the checked button nonenglish */
 		{
-			echo "<input type=\"radio\" name=\"language\" value=\"English\"> English" ;
-			echo "<input type=\"radio\" name=\"language\" value=\"Non-English\" checked> Non-English" ;
+			echo "<input class=\"uname\" type=\"radio\" name=\"language\" value=\"English\"> English" ;
+			echo "<input class=\"uname\" type=\"radio\" name=\"language\" value=\"Non-English\" checked> Non-English" ;
 			
 		}
 		echo "<br><br>";
 		echo "<p><b>Count: </b> $count </p> ";
-		echo "New Count <input type=\"text\" value=\"$count\" size=\"20\" maxlength = \"10\" name = \"vcount\" >";
+		echo "New Count <input class=\"uname\" type=\"text\" value=\"$count\" size=\"20\" maxlength = \"10\" name = \"vcount\" >";
 		
 		?>
 		<?php
@@ -185,11 +196,11 @@
    		?>
    		<?php
    		echo "<p> <b>Current Tags: </b> ";
-   		echo "<input type=\"text\" name=\"vtags\" value=\"$tag\" maxlength = \"70\" size=\"60\" > </p>";
+   		echo "<input class=\"uname\" type=\"text\" name=\"vtags\" value=\"$tag\" maxlength = \"70\" size=\"60\" > </p>";
 		
 		
 		echo "<br><br>";
-		echo "<input type=\"submit\" name=\"submit\" value=\"Enter\"> ";
+		echo "<input class=\"uname\" type=\"submit\" name=\"submit\" value=\"Enter\"> ";
 		echo "</form>";	
 		?>
 		

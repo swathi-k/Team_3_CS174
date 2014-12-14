@@ -44,7 +44,9 @@
 		
 		if ($result->num_rows == 1)
 		{
-			$_SESSION["isAdmin"] = $result->fetch_row();
+			$isAdmin = $result->fetch_row();
+			$_SESSION["isAdmin"] = $isAdmin[0];
+			print $isAdmin;
 			$_SESSION["uid"] = $uid;
 			$_SESSION["pwrd"] = $pwrd;
 
