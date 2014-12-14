@@ -11,7 +11,8 @@
 		<link href='http://fonts.googleapis.com/css?family=Amaranth:700' rel='stylesheet' type='text/css'>
 	
 		<link rel="stylesheet" href="styles/slideshow.css" />
-
+		<script src="jquery.js"></script>
+		<script src="player.js"></script>
 	</head>
 
 	<body> 
@@ -31,25 +32,18 @@
 	<span id="sl_i3" class="sl_command sl_i">&nbsp;</span>
 	<span id="sl_i4" class="sl_command sl_i">&nbsp;</span>
 	
-	<section id="slideshow">
+
 	
-		<a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a>
-		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
 		
-		<div class="container">
-			<iframe id="ytplayer" frameborder="0" allowfullscreen="1" title="YouTube video player" width="700" height="400" src="https://www.youtube.com/embed/UTucZltO4UM?controls=0&amp;showinfo=1&amp;autoplay=1&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.sjsu-cs.org"></iframe>
-		</div>
 		
-		<span id="timeline"></span>
+		<div id="container" class="container"></div>
+
+		<div id="browse-container">
+            <button class="browse-button" id="prev-button">prev</button>
+            <button class="browse-button" id="next-button">next</button>
+        </div>
 		
-		<ul class="dots_commands"><!--
-			--><li><a title="Show slide 1" href="#sl_i1">Slide 1</a></li><!--
-			--><li><a title="Show slide 2" href="#sl_i2">Slide 2</a></li><!--
-			--><li><a title="Show slide 3" href="#sl_i3">Slide 3</a></li><!--
-			--><li><a title="Show slide 4" href="#sl_i4">Slide 4</a></li>
-		</ul>
 		
-	</section>
 
 <table id="gallery" style="width:100%">
 <tr>

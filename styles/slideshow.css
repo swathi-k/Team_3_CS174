@@ -2,6 +2,39 @@
 	
 */
 
+#container {
+    display:           table-cell;
+    background:        black;
+    vertical-align:    middle;
+    min-width: 1080px;
+    min-height: 720px;
+    height: auto;
+    width: 100%;
+}
+
+#browse-container {
+    position: absolute;
+    width: 95%;
+    top: 200px;
+    z-index: 1;
+}
+
+.browse-button {
+    position: relative;
+}
+
+#prev-button {
+	left: 0%;
+}
+
+#next-button {
+	left: 100%;
+}
+
+.browse-button {
+    position: relative;
+}
+
 
 h1, h2 {
 	text-align:center;
