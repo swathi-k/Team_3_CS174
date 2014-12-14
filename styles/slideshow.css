@@ -14,13 +14,19 @@
 
 #browse-container {
     position: absolute;
-    width: 95%;
+    width: 94%;
     top: 200px;
     z-index: 1;
 }
 
 .browse-button {
     position: relative;
+    border:none;
+    background-color:#000066;
+    height:28px;
+    color:#fff;
+    font-size:18px;
+    margin:0px;
 }
 
 #prev-button {
