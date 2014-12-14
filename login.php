@@ -27,8 +27,6 @@
 	<br><br>
 	Password: <input class="uname" type="password" name="pwrd"><br>
 	<br>
-	Use Cookies? Yes<input type="radio" name="cook" value="yes">
-				 No<input type="radio" name="cook" value="no" checked><br><br>
 
 	<input type="submit" value="Login">
 <br>
@@ -40,17 +38,13 @@
 	{
 		include "dbconnect.php";
 		
-		$query = "SELECT * FROM `users` WHERE userName='$uid' and passWord='$pwrd'";
+		$query = "SELECT `adminBoolean` FROM `users` WHERE userName='$uid' and passWord='$pwrd'";
 		
 		$result = $conn->query($query);
 		
 		if ($result->num_rows == 1)
 		{
-			$query2 = "SELECT adminBoolean FROM users WHERE userName='$uid' and passWord='$pwrd'";
-
-			$result2 = mysqli_query($conn, $query2);
-			$admin = mysqli_fetch_array($result2);
-			$_SESSION["isAdmin"] = $admin["adminBoolean"];	
+			$_SESSION["isAdmin"] = $result->fetch_row();
 			$_SESSION["uid"] = $uid;
 			$_SESSION["pwrd"] = $pwrd;
 
@@ -64,56 +58,20 @@
 		}
 	}
 	
-	function setCookies($status = false)
+
+	if (isset($_POST["uid"]) && isset($_POST["pwrd"]))
 	{
-		$_SESSION["cook"] = $status;
-	}
-	
-	if (isset($_POST["uid"]) && isset($_POST["pwrd"]) && isset($_POST["cook"]))
-	{
-		
 		
 		if (checkInfo($_POST["uid"], $_POST["pwrd"]))
-		{		
-			if ($_POST["cook"] === "yes")
-			{
-				setCookies(true);
-			}
-			
-			else
-			{
-				setCookies();
-			}
-				
-
+		{
 			include "loginSuccess.php";
 		}
 		
 		else
 		{
 			print("<h3>Invalid login info!</h3>");
-			setCookies();
 		}
 		
-	}
-	
-	elseif (isset($_COOKIE["uid"]) && isset($_COOKIE["pwrd"]))
-	{
-		if ($_COOKIE["uid"] !== '' && $_COOKIE["pwrd"] !== '')
-		{
-
-
-			if (checkInfo($_COOKIE["uid"], $_COOKIE["pwrd"]))
-			{
-				print("<br><h3>Login saved via cookies!</h3>");
-				include "loginSuccess.php";
-			}
-			
-			else
-			{
-				print("<h3>Invalid cookie info.<br>Please clean your cookies and log in as a valid user.</h3>");
-			}
-		}
 	}
 
 

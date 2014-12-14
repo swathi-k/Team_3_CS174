@@ -1,15 +1,5 @@
-<?php
-	session_start();
-	if (isset($_SESSION["cook"]))
-	{
-		if ($_SESSION["cook"] == true)
-		{
-			setcookie("uid", $_SESSION["uid"], time() + 60);
-			setcookie("pwrd", $_SESSION["pwrd"], time() + 60);
-			$_SESSION["cook"] = "";
-		}
-	}
-?>
+<?php session_start()?>
+
 <!DOCTYPE HTML> 
 <html>
 
