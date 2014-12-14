@@ -19,6 +19,7 @@
 	
 	
 	$logout = '<a href="./logout.php">Logout</a>';
+	$update = '<li><a href="./update_account.php">Update Account</a></li>';
 	
 	if (!isset($_SESSION["uid"]))
 	{
@@ -28,7 +29,7 @@
 	else 
 	{
 
-		$menu = $menu . $logout;
+		$menu = $menu . $logout . $update;
 		if (isset($_SESSION["isAdmin"]))
 		{
 			if ($_SESSION["isAdmin"] == 1)

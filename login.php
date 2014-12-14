@@ -38,6 +38,10 @@
 	{
 		include "dbconnect.php";
 		
+		$uid = mysqli_real_escape_string($conn, $uid);
+		
+		$pwrd = mysqli_real_escape_string($conn, $pwrd);
+		
 		$query = "SELECT `adminBoolean` FROM `users` WHERE userName='$uid' and passWord='$pwrd'";
 		
 		$result = $conn->query($query);

@@ -18,13 +18,13 @@ session_start();
 
 	<body> 
 <?php include("menu.php");?>
-	<h1 align = "center" style="color:white";>Account registration</h1>
+	<h1 align = "center" style="color:white";>Account Update</h1>
 	<div id="register" style="background-color:#ffffff">
-	<form action="verify_account.php" method="post"> <!--SEND TO Verify.php afterwards -->
+	<form action="verify_update.php" method="post"> <!--SEND TO Verify.php afterwards -->
         <table align="center">
 			<tr>
             	<td><label class="formtext">Email: </label></td>
-				<td><input class = "uname" type="text" name="username" size=20" /></td>
+				<td><input class = "uname" type="text" name="user" size=20" /></td>
             </tr>
             <tr>
             	<td><label class="formtext">Enter a Password: </label></td>
@@ -36,7 +36,7 @@ session_start();
             </tr>
             <tr>
             	<td colspan="2" align="center">
-            		<input type="submit" value="Register!" class="btn"/>
+            		<input type="submit" value="Update Account!" class="btn"/>
                 </td>
             </tr>
         </table>
