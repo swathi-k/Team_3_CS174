@@ -46,7 +46,6 @@
 		{
 			$isAdmin = $result->fetch_row();
 			$_SESSION["isAdmin"] = $isAdmin[0];
-			print $isAdmin;
 			$_SESSION["uid"] = $uid;
 			$_SESSION["pwrd"] = $pwrd;
 
