@@ -82,7 +82,7 @@ else
 	<p>That user name is already taken. Please try again with a different one.</p>>
 	<?else:?>
 	<?php 
-	if (!$emptyError)
+	if (!$empty_error)
 	{
 		$oldUid = $_SESSION["uid"];
 		
