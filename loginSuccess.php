@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" http-equiv="refresh" content="3;url=./index.php">
-<title>Logout</title>
+<meta charset="UTF-8" http-equiv="refresh" content="5;url=./index.php">
+<title>Logging In</title>
 </head>
 <body>
 
@@ -11,7 +11,7 @@
 
 
  
-	print ("<h1>You have logged out!</h1><h3>Redirecting in 3 seconds...</h3>");
+	print ("<h1>Logging In!</h1><h3>Redirecting in 5 seconds...</h3>");
 	session_start();
 	
 	session_unset();

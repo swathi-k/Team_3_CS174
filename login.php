@@ -40,10 +40,14 @@
 	{
 		include "dbconnect.php";
 		
+//Is returning empty string		
+//		$uid = mysql_real_escape_string($uid);
+//		$pwrd = mysql_real_escape_string($pwrd);
 		
-		$uid = mysql_real_escape_string($uid);
-		$pwrd = mysql_real_escape_string($pwrd);
-		
+//		print "help";
+//		print $uid;
+//		print $pwrd;
+
 		$query = "SELECT * FROM users WHERE userName='$uid' and passWord='$pwrd'";
 		
 		$result = $conn->query($query);
@@ -68,8 +72,8 @@
 	function isAdmin($uid, $pwrd) 
 	{								
 		include "dbconnect.php";
-		$uid = mysql_real_escape_string($uid);
-		$pwrd = mysql_real_escape_string($pwrd);
+	//	$uid = mysql_real_escape_string($uid);
+	//	$pwrd = mysql_real_escape_string($pwrd);
 		
 		$query2 = "SELECT adminBoolean FROM users WHERE userName='$uid' and passWord='$pwrd'";
 			
@@ -105,7 +109,9 @@
 	
 	if (isset($_POST["uid"]) && isset($_POST["pwrd"]) && isset($_POST["cook"]))
 	{
-		
+		//print "help2";	
+		//print $_POST["uid"];
+		//print $_POST["pwrd"];
 		
 		
 		if (checkInfo($_POST["uid"], $_POST["pwrd"]))
@@ -170,6 +176,8 @@
 	{
 		if ($_COOKIE["uid"] !== '' && $_COOKIE["pwrd"] !== '')
 		{
+
+
 			if (checkInfo($_COOKIE["uid"], $_COOKIE["pwrd"]))
 			{
 				print("<br><h3>Login saved via cookies!</h3>Redirecting in 5 seconds...");

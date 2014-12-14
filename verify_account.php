@@ -62,23 +62,7 @@ if (!filter_var($username, FILTER_VALIDATE_EMAIL))
 	<body> 
 <div id="hmenu"> 
 	
-	<form method=post action="index.php">
-	<ul>
-		<li id="title">
-			Wing Chun
-		</li> 
-		<li id="link">
-			<a href="register.php">Create an Account!</a>
-		</li>
-  		<li id="link">
-			<a href="entervideo.php">Enter a video into the dbs!</a>
-		</li>
-		<li id="search">
-			<input type="text" minlength="1" placeholder="Search by Keyword..." name="keyword">
-    		<input type="submit" name="submit" value="Enter">
-		</li>
-	</ul>	
-	</form>
+	<?php include("menu.php");?>
 	<?if($empty_error):?>
 	<p>Do not leave any fields blank. Please try to register again.</p>
 	<?elseif($password_length):?>
