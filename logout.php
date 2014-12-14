@@ -1,3 +1,7 @@
+<?php setcookie("uid", '', time() - 60);
+	setcookie("pwrd", '', time() - 60);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +22,6 @@
 	
 	session_destroy();
 	
-	setcookie("uid", '', time() - 60);
-	
-//	header("refresh:3;url=/index.php");
 
 	
 ?>

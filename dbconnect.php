@@ -9,9 +9,9 @@
 
 	// connect to database
 	$dbhost = 'localhost';
-	$dbuser = 'root';
-	$dbpass = '';
-	$mydb = 'myvideos';
+	$dbuser = 'youthcyb_kotturu';
+	$dbpass = '007824167';
+	$mydb = 'youthcyb_kotturu';
 
 	$conn = new mysqli($dbhost, $dbuser, $dbpass, $mydb);
 
@@ -21,6 +21,6 @@
   	}
 
 
-	mysqli_select_db($conn, 'myvideos');
+	mysqli_select_db($conn, 'youthcyb_kotturu');
 
 ?>

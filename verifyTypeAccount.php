@@ -18,7 +18,7 @@
 	}
 	else
 	{
-		header('Location: ./login.php');
+		import "./redirect.php";
 	}
 		
 

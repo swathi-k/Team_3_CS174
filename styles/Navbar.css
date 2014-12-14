@@ -46,7 +46,6 @@ div#pagination a{
 
 div#hmenu { 
    margin: 0; 
-   padding: .3em 0 .3em 0; 
    background: #FFFFFF; 
    width: 100%; 
    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -54,7 +53,6 @@ div#hmenu {
    font-size: large; 
    color: #000066; 
    padding-left: 20px;
-   padding-top: 10px;
 } 
 
 div#hmenu ul { 

@@ -1,3 +1,15 @@
+<?php
+	session_start();
+	if (isset($_SESSION["cook"]))
+	{
+		if ($_SESSION["cook"] == true)
+		{
+			setcookie("uid", $_SESSION["uid"], time() + 60);
+			setcookie("pwrd", $_SESSION["pwrd"], time() + 60);
+			$_SESSION["cook"] = "";
+		}
+	}
+?>
 <!DOCTYPE HTML> 
 <html>
 
@@ -35,11 +47,7 @@
 		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
 		
 		<div class="container">
-		<div>
-		<button class="browse-button" id="prev-button">prev</button>
-		<button class="browse-button" id="prev-button">next</button></div>
-		  <iframe id="ytplayer" frameborder="0" allowfullscreen="1" title="YouTube video player" width="700" height="400" src="https://www.youtube.com/embed/UTucZltO4UM?controls=0&amp;showinfo=1&amp;autoplay=1&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.sjsu-cs.org"></iframe>
-			
+			<iframe id="ytplayer" frameborder="0" allowfullscreen="1" title="YouTube video player" width="700" height="400" src="https://www.youtube.com/embed/UTucZltO4UM?controls=0&amp;showinfo=1&amp;autoplay=1&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.sjsu-cs.org"></iframe>
 		</div>
 		
 		<span id="timeline"></span>

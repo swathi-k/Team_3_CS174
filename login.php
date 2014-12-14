@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +13,11 @@
 </head>
 <body>
 
-<?php 
-	include "menu.php";
-?>
+<?php
 
+	include "menu.php";
+	
+?>
 <div style="background-color:#ffffff;text-align:center">
 <br>
 <h1>Please Log In</h1></form>
@@ -32,34 +34,27 @@
 <br>
 </form>
 
-
-<?php 
-	
+<?php	
 	
 	function checkInfo($uid, $pwrd)
 	{
 		include "dbconnect.php";
 		
-//Is returning empty string		
-//		$uid = mysql_real_escape_string($uid);
-//		$pwrd = mysql_real_escape_string($pwrd);
-		
-//		print "help";
-//		print $uid;
-//		print $pwrd;
-
-		$query = "SELECT * FROM users WHERE userName='$uid' and passWord='$pwrd'";
+		$query = "SELECT * FROM `users` WHERE userName='$uid' and passWord='$pwrd'";
 		
 		$result = $conn->query($query);
 		
 		if ($result->num_rows == 1)
 		{
-			session_start();
-				
+			$query2 = "SELECT adminBoolean FROM users WHERE userName='$uid' and passWord='$pwrd'";
+
+			$result2 = mysqli_query($conn, $query2);
+			$admin = mysqli_fetch_array($result2);
+			$_SESSION["isAdmin"] = $admin["adminBoolean"];	
 			$_SESSION["uid"] = $uid;
 			$_SESSION["pwrd"] = $pwrd;
-			
 
+			
 			return true;
 		}
 		
@@ -68,100 +63,30 @@
 			return false;
 		}
 	}
-	/* Only sets the entry in the sessin array $_SESSION["isAdmin"] = 1.  This keeps track of type of user*/
-	function isAdmin($uid, $pwrd) 
-	{								
-		include "dbconnect.php";
-	//	$uid = mysql_real_escape_string($uid);
-	//	$pwrd = mysql_real_escape_string($pwrd);
-		
-		$query2 = "SELECT adminBoolean FROM users WHERE userName='$uid' and passWord='$pwrd'";
-			
-		$result2 = $conn->query($query2);
 	
-		if ($result2->num_rows == 1)			
-		{
-			while($row = $result2->fetch_assoc()) 
-			{
-        		$isAdmin = $row["adminBoolean"];
-   			 }
-			
-		}	
-		if ($isAdmin == 1)				
-		{
-			
-			$_SESSION["isAdmin"] = 1; //user is an administrator
-			
-		}
-		else
-			$_SESSION["isAdmin"] = 0; //user is a regular user
-			
-				
-	}
-	
-	//if called without any parameters it will clear cookies
-	function setCookies($uid = '', $pwrd = '')
+	function setCookies($status = false)
 	{
-		$month = time() + 3600 * 24 * 30;
-		setcookie("uid", '', $month);
-		setcookie("pwrd", '', $month);
+		$_SESSION["cook"] = $status;
 	}
 	
 	if (isset($_POST["uid"]) && isset($_POST["pwrd"]) && isset($_POST["cook"]))
 	{
-		//print "help2";	
-		//print $_POST["uid"];
-		//print $_POST["pwrd"];
 		
 		
 		if (checkInfo($_POST["uid"], $_POST["pwrd"]))
-		{	
-			
-			isAdmin($_POST["uid"], $_POST["pwrd"]);	
-			/*
-			if (!isAdmin($_POST["uid"], $_POST["pwrd"]))
-			{	
-				print("<br><h3>Login successful!</h3>Hello Admin, Redirecting in 5 seconds...");
-				header("refresh:5; url=./index.php");
-			
-				if ($_POST["cook"] === "yes")
-				{
-					setCookies($_POST["uid"], $_POST["pwrd"]);
-				}
-			
-				else 
-				{
-					setCookies();
-				}
-			}
-			else
-			{
-				print("<br><h3>Login successful!</h3>Redirecting in 5 seconds...");
-				header("refresh:5; url=./adminCorrect.php");
-			
-				if ($_POST["cook"] === "yes")
-				{
-					setCookies($_POST["uid"], $_POST["pwrd"]);
-				}
-			
-				else 
-				{
-					setCookies();
-				}			
-			}
-			*/
-			print("<br><h3>Login successful!</h3>Redirecting in 5 seconds...");
-			header("refresh:5; url=./index.php");
-			
+		{		
 			if ($_POST["cook"] === "yes")
 			{
-				setCookies($_POST["uid"], $_POST["pwrd"]);
+				setCookies(true);
 			}
-		
-			else 
+			
+			else
 			{
 				setCookies();
 			}
+				
+
+			include "loginSuccess.php";
 		}
 		
 		else
@@ -180,8 +105,8 @@
 
 			if (checkInfo($_COOKIE["uid"], $_COOKIE["pwrd"]))
 			{
-				print("<br><h3>Login saved via cookies!</h3>Redirecting in 5 seconds...");
-				header("refresh:5;url=./index.php");
+				print("<br><h3>Login saved via cookies!</h3>");
+				include "loginSuccess.php";
 			}
 			
 			else
@@ -190,6 +115,8 @@
 			}
 		}
 	}
+
+
 	
 ?>
 </div>
