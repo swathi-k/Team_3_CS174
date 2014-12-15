@@ -6,6 +6,7 @@
       var startPosition = 30;
      
       var videos = ["-E0XNRawUYw", "-lba30NLsMM", "2FsZyPjsjTA", "2kSM7rEbDk4"];
+      var 
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
@@ -102,6 +103,20 @@
     	  player.playVideoAt(current);
     	  player.seekTo(startPosition, false);
     	  player.playVideo();
+      }
+      
+      function playGivenVideo(videoID)
+      {
+    	  player = new YT.Player('container', {
+              height: '720',
+              width: '1080',
+              videoId: videoID,
+              playerVars: { 'controls': 0, 'showinfo': 1, 'autoplay': 1 },
+              events: 
+              {
+                
+              }
+            });
       }
       
       jQuery(document).ready(init);
