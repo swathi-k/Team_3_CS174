@@ -57,18 +57,26 @@
 		//start of form
 		echo "<form action=\"verify_vidInput.php\" method =\"post\">";
 		echo "<input class=\"uname\" type= \"hidden\" name= \"videoID\" value= \"$vidID\">";
-		echo "<p><b>Title:  </b>";
-		echo "$vidTitle </p>";
-		print "    ";
+		//echo "<p><b>Title:  </b>";
+		//echo "$vidTitle </p>";
+		//print "    ";
 		echo "<br>";
-		echo "New Title:  ";
+		echo "<b>Title:  </b>";
 		echo "<input class=\"uname\" type=\"text\" value=\"$vidTitle\" size=\"45\" maxlength = \"80\" name = \"vtitle\" >";
 		echo "<br>";
 		
-		echo "<p><b>Length:</b> $vidLength  ";
+		echo "<p><b>Video Link: </b>";
+		echo "<input class=\"uname\" type=\"text\" value=\"$vidLink\" size=\"45\" maxlength = \"80\" name = \"vlink\" ></p>";
+		
+		echo "<p><b>Icon Image: </b>";
+		echo "<input class=\"uname\" type=\"text\" value=\"$icomImage\" size=\"45\" maxlength = \"80\" name = \"iImage\" ></p>";
 		
 		
-		echo "New Length <select class=\"uname\" name=\"vlength\"> ";
+		
+		echo "<p><b>Length:</b>";
+		
+		
+		echo "<select class=\"uname\" name=\"vlength\"> ";
 		
 			for ($i = 1; $i<=30; $i++)
 			{
@@ -86,7 +94,7 @@
 	
 		
 		echo "<br><br>";
-		echo "<p><b>Current highest resolution: </b>$res". "p";
+		echo "<p><b>Highest resolution: </b>";
 		?>
 		
 		
@@ -135,12 +143,12 @@
 		echo "<b>Desription: </b><textarea rows=\"5\"  cols=\"30\" maxlength = \"1000\" name = \"vdescr\"> $description </textarea>";
 		echo "<br><br>";
 		
-		echo "<p><b>Language: </b> $language</p>";
+		echo "<p><b>Language: </b>";
 	
 		if ($language === 'English')
 		{	
 			echo "<input class=\"uname\" type=\"radio\" name=\"language\" value=\"English\" checked>English" ;
-			echo "<input class=\"uname\" type=\"radio\" name=\"language\" value=\"Non-English\">Non-English" ;
+			echo "<input class=\"uname\" type=\"radio\" name=\"language\" value=\"Non-English\">Non-English </p>" ;
 		}
 		else /*  Else make the checked button nonenglish */
 		{
@@ -149,16 +157,15 @@
 			
 		}
 		echo "<br><br>";
-		echo "<p><b>Count: </b> $count </p> ";
-		echo "New Count <input class=\"uname\" type=\"text\" value=\"$count\" size=\"20\" maxlength = \"10\" name = \"vcount\" >";
+		echo "<p><b>Count: </b>";
+		echo "<input class=\"uname\" type=\"text\" value=\"$count\" size=\"20\" maxlength = \"10\" name = \"vcount\" > </p>";
 		
 		?>
 		<?php
-		echo "<br><br>";
+		echo "<br>";
 	
-		echo "<p><b>Current Type(s): </b> $vidType </p>";
+		echo "<p><b>Current Type(s): </b>";
 		?>
-		New type:
 		<?php
 		
 		if (isInArray("Tutorial", $vidType))
@@ -201,7 +208,16 @@
 		
 		echo "<br><br>";
 		echo "<input class=\"uname\" type=\"submit\" name=\"submit\" value=\"Enter\"> ";
+		echo "<input class = \"uname\" type=\"button\" VALUE=\"Cancel\" onClick=\"history.go(-1);return true;\"> ";
 		echo "</form>";	
+		
+	
+		/*
+		<h2>Thanks!!</h2>
+		<h2><a href="AdminCorrect.php">Edit Another Video!</a></h2>
+		<h2><a href="index.php">Home</a></h2>
+		
+		*/
 		?>
 		
 		<?php

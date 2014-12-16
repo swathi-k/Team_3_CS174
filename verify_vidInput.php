@@ -61,6 +61,14 @@ elseif(empty($_POST["vtypes"]))
 {
 	printErrorMessage("*Please Enter Video Types!");
 }
+elseif(empty($_POST["vlink"]))
+{
+	printErrorMessage("*Please a video Link!");
+}
+elseif(empty($_POST["iImage"]))
+{
+	printErrorMessage("*Please Icon Image!");
+}
 else 
 {
 	include 'update_entry.php';
