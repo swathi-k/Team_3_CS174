@@ -24,8 +24,6 @@
      
 </div>
 
-<br><br>
-
 	<span id="sl_play" class="sl_command">&nbsp;</span>
 	<span id="sl_pause" class="sl_command">&nbsp;</span>
 	<span id="sl_i1" class="sl_command sl_i">&nbsp;</span>
@@ -47,36 +45,73 @@
 		
 <?php 
 
-	$sql = "SELECT DISTINCT  `videolink` 
-FROM  fun_video";
+	print "<table id='gallery' style='width:100%'>";
+	
+	$fav_vid = false;
+	if(isset($_SESSION["uid"])) {
+		$fav_vid = true;
+		$username = $_SESSION["uid"];
+		$sql = "SELECT iconimage, videolink FROM favorites INNER JOIN fun_video ON favorites.vId=fun_video.id WHERE favorites.userName = '$username' LIMIT 0, 4";
+		$result = mysqli_query($conn, $sql);
+
+	}
+	$total = 4;
+	if($fav_vid)
+	{
+		while($row = mysqli_fetch_array($result)) 
+		{
+			$videoID = explode("=",$row['videolink']);
+			$videoID = $videoID[1];
+			print ("
+				<td> 
+					<a class=\"show-popup\" href=\"javascript: void(0)\" onclick=\" loadVideo('$videoID');\">
+						<img src=\"{$row['iconimage']}\" width=\"220\" height=\"215\" />
+					</a>
+				</td> 
+
+				");
+			$total = $total - 1;
+		}
+	}
+
+	$sql = "SELECT  `iconimage`, `videolink` FROM  fun_video";
 	$arrayofvideos = array();
+	$arrayoficons = array();
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_array($result))
-	{	
-		$piece = explode("=", $row['videolink']);
-		$arrayofvideos[] = $piece[1];
+	{
+		$piece = $row['videolink'];
+		$icon = $row['iconimage'];
+		$arrayofvideos[] = $piece;
+		$arrayoficons[] = $icon;
 	}
 	$buffer = array();
-	print "<table id='gallery' style='width:100%'>";
 	$rand = rand( 0, count($arrayofvideos) - 1);
 	$buffer[] = $rand;
-	for($i = 0; $i < 4; $i++)
+	while($total > 0)
 	{
-		while(in_array($rand, $buffer))
-		{
-			$rand = rand( 0, count($arrayofvideos) - 1);
-			
-		}
-		$buffer[] = $rand;
-		print"
+	while(in_array($rand, $buffer))
+	{
+	$rand = rand( 0, count($arrayofvideos) - 1);
 		
-		<td>
-		<object width='220' height='215'
-		data='http://www.youtube.com/v/$arrayofvideos[$rand]'>
-		</object>
-		</td>";
 	}
-print"</table>";
+	$buffer[] = $rand;
+	$videoID = explode("=",$arrayofvideos[$rand]);
+	$videoID = $videoID[1];
+	print ("
+			<td>
+			<a class=\"show-popup\"  href=\"javascript: void(0)\" onclick=\" loadVideo('$videoID');\">
+			<img src=\"{$arrayoficons[$rand]}\" width=\"220\" height=\"215\" />
+			</a>
+			</td>
+	
+			");
+	
+	
+	$total = $total - 1;
+	}
+	
+	print"</table>";
 
 ?>
 

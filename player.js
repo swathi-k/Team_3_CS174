@@ -4,24 +4,26 @@
       var duration = 15000;
       var current = 0;
       var startPosition = 30;
+      var stopSlideshow = false;
      
       var videos = ["-E0XNRawUYw", "-lba30NLsMM", "2FsZyPjsjTA", "2kSM7rEbDk4"];
-      var 
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
       var player;
       
+      var videoParm;
+      
       function init()
       {
     	  var tag = document.createElement('script');
 
-          tag.src = "https://www.youtube.com/iframe_api";
+          tag.src = 'https://www.youtube.com/iframe_api';
           var firstScriptTag = document.getElementsByTagName('script')[0];
           firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
           
-          jQuery("#prev-button").click(previous);
-          jQuery("#next-button").click(next);
+          jQuery('#prev-button').click(previous);
+          jQuery('#next-button').click(next);
       }
       
       function onYouTubeIframeAPIReady() 
@@ -59,7 +61,7 @@
         	timeout = true;
         	setTimeout(function() 
         	{
-        	   if (timeout)
+        	   if (timeout && !stopSlideshow)
         	   {
         		   next();
         	   }
@@ -71,8 +73,10 @@
       
       function next()
       {
-    	  timeout = false;
+    	  timeout = stopSlideshow = false;
     	  player.stopVideo();
+    	  
+    	  player.mute();
     	  
     	  current++;
     	  
@@ -90,8 +94,10 @@
       
       function previous()
       {
-    	  timeout = false;
+    	  timeout = stopSlideshow = false;
     	  player.stopVideo();
+    	  
+    	  player.mute();
     	  
     	  current--;
     	  
@@ -105,18 +111,12 @@
     	  player.playVideo();
       }
       
-      function playGivenVideo(videoID)
+      function loadVideo(id)
       {
-    	  player = new YT.Player('container', {
-              height: '720',
-              width: '1080',
-              videoId: videoID,
-              playerVars: { 'controls': 0, 'showinfo': 1, 'autoplay': 1 },
-              events: 
-              {
-                
-              }
-            });
+    	  player.loadVideoById(id);
+    	  stopSlideshow = true;
+    	  player.unMute();
       }
+      
       
       jQuery(document).ready(init);
