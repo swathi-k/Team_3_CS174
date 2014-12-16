@@ -11,8 +11,7 @@
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
       var player;
-      
-      var videoParm;
+
       
       function init()
       {
