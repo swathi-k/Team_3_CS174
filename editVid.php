@@ -25,13 +25,13 @@
 		$vidID = $_POST["id"];
 		
 		$tbl_name = "fun_video";
-		$sql = "SELECT id, title, iconimage, videolink, videolength, highestresolution, description, language, viewcount, videotype, tag ";
+		$sql = "SELECT id, title, iconimage, videolink, videolength, highestresolution, description, language, viewcount, videotype, tag, category ";
 		$sql = $sql ." FROM $tbl_name WHERE id = $vidID";
 		
 		$result = $conn->query($sql);
-		
-		if($result->num_rows === 1)
-		{
+	
+		if($result->num_rows === 1) /*sorry, I don't know how to extract just the one row  */
+		{							/*							  	-Gibran            */
 			while ($row = $result->fetch_assoc())
 			{
 				
@@ -45,6 +45,7 @@
 				$count =  $row["viewcount"];
 				$vidType = $row["videotype"];
 				$tag = $row["tag"];
+				$cat = $row["category"];
 			}
 		}
 		//echo "<a href=\"{$row['videolink']}\"><img src=\"{$row['iconimage']}\" height=\"100\" width=\"160\"></a>";
@@ -205,19 +206,73 @@
    		echo "<p> <b>Current Tags: </b> ";
    		echo "<input class=\"uname\" type=\"text\" name=\"vtags\" value=\"$tag\" maxlength = \"70\" size=\"60\" > </p>";
 		
+				
+		echo "<br><br>";
+				echo "<b>Category: </b>";
+				echo "<select class=\"uname\" name=\"category\"> ";
+
+				if ($cat == 'Aikido')
+					echo "<option value=\"Aikido\" selected>Aikido</option>";
+				else 
+					echo "<option value=\"Aikido\">Aikido</option>";
+				
+				if ($cat == 'Chen Taichi')
+					echo "<option value=\"Chen Taichi\" selected>Chen Taichi</option>";
+				else
+					echo "<option value=\"Chen Taichi\">Chen Taichi</option>";
+					
+				if ($cat == 'Judo')
+					echo "<option value=\"Judo\" selected>Judo</option>";
+				else
+					echo "<option value=\"Judo\">Judo</option>";
+					
+				if ($cat == 'KungFu Movie')
+					echo "<option value=\"KungFu Movie\" selected>KungFu Movie</option>";
+				else
+					echo "<option value=\"KungFu Movie\">KungFu Movie</option>";
+				
+				if ($cat == 'QiGong')
+					echo "<option value=\"QiGong\" selected>QiGong</option>";
+				else
+					echo "<option value=\"QiGong\">QiGong</option>";
+					
+				if ($cat == 'Shaolin')
+					echo "<option value=\"Shaolin\" selected>Shaolin</option>";
+				else
+					echo "<option value=\"Shaolin\">Shaolin</option>";
+					
+				if ($cat == 'Sun Taichi')
+					echo "<option value=\"Sun Taichi\" selected>Sun Taichi</option>";
+				else
+					echo "<option value=\"Sun Taichi\">Sun Taichi</option>";
+				
+				if ($cat == 'Tae kwon do')
+					echo "<option value=\"Tae kwon do\" selected>Tae kwon do</option>";
+				else
+					echo "<option value=\"Tae kwon do\">Tae kwon do</option>";
+					
+				if ($cat == 'Wing Chun')
+					echo "<option value=\"Wing Chun\" selected>Wing Chun</option>";
+				else
+					echo "<option value=\"Wing Chun\">Wing Chun</option>";
+				
+				if ($cat == 'Wu Taichi')
+					echo "<option value=\"Wu Taichi\" selected>Wu Taichi</option>";
+				else
+					echo "<option value=\"Wu Taichi\">Wu Taichi</option>";
+					
+				if ($cat == 'Yang Taichi')
+					echo "<option value=\"Yang Taichi\" selected>Yang Taichi</option>";
+				else
+					echo "<option value=\"Yang Taichi\">Yang Taichi</option>";
+			
+			echo "</select>	</p>";
 		
 		echo "<br><br>";
 		echo "<input class=\"uname\" type=\"submit\" name=\"submit\" value=\"Enter\"> ";
 		echo "<input class = \"uname\" type=\"button\" VALUE=\"Cancel\" onClick=\"history.go(-1);return true;\"> ";
 		echo "</form>";	
 		
-	
-		/*
-		<h2>Thanks!!</h2>
-		<h2><a href="AdminCorrect.php">Edit Another Video!</a></h2>
-		<h2><a href="index.php">Home</a></h2>
-		
-		*/
 		?>
 		
 		<?php
