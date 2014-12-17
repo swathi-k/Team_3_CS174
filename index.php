@@ -174,8 +174,32 @@
    <option value="Others">Others</option>
    </select>
    <br><br>
-      
+   
+   <?php 
+   $queries = "SELECT DISTINCT category
+				FROM fun_video";
+   print "Category
+				<select name='category'>
+   				<option value='' selected>Select One</option> ";
+   $resulty = mysqli_query($conn, $queries);
+   while($row = mysqli_fetch_array($resulty))
+   {
+   	$cate = $row['category'];
+   	$cate = mysqli_real_escape_string($conn, $cate);
+	print $cate;
+   	print "<option value='$cate'>$cate</option>";
+   
+   }
+   	print"</select>
+   <br><br>";
+   
+   
+   ?>
+   
+   
    <input type="submit" name="submit" value="Enter">
+   
+   
 </form>
 </td>
 <td>
@@ -334,11 +358,31 @@
 		}
 	}
 	
+	if(isset($_POST['category']))
+	{
+		if(!empty($_POST["category"])) {
+			 
+			$ctype = $_POST["category"];
+			 
+			if(!empty($subquery))
+			{
+				$subquery = $subquery . " AND ";
+				$subquery = $subquery . " category = '$ctype'";
+			}
+			else
+			{
+				$subquery = " category = '$ctype'";
+			}
+			 
+		}
+	}
+	
+	
 	if (isset($_GET['page']))
 		$page = $_GET['page']; 
 	else
 		$page = 0;	
-
+  
 
 	if (isset($subquery))
 	{
@@ -364,7 +408,7 @@
 	
 	/* Get data. */
 	
-	$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag FROM $tbl_name WHERE $subquery LIMIT $start, $limit";
+	$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag, category FROM $tbl_name WHERE $subquery LIMIT $start, $limit";
 	//$sql = "SELECT id FROM $tbl_name LIMIT $start, $limit";
 	$result = mysqli_query($conn, $sql);
 	
@@ -476,7 +520,7 @@
 			$username = $_SESSION["uid"];
 
 
-			$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag FROM favorites INNER JOIN fun_video ON favorites.vId=fun_video.id WHERE favorites.userName = '$username' LIMIT $start, 4";
+			$sql = "SELECT id, title, iconimage, videolink, videolength, description, language, viewcount, videotype, tag, category FROM favorites INNER JOIN fun_video ON favorites.vId=fun_video.id WHERE favorites.userName = '$username' LIMIT $start, 4";
 
 			$result = mysqli_query($conn, $sql);
 
@@ -534,6 +578,10 @@
 		print "<td>";
 		print "<b>Tags:</b>";
 		print $row["tag"];
+		print "</td>";
+		print "<td>";
+		print "<b>Category:</b>";
+		print $row["category"];
 		print "</td>";
 		print "</tr>\n";
          
