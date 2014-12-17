@@ -112,6 +112,7 @@
       
       function loadVideo(id)
       {
+
     	  player.loadVideoById(id);
     	  stopSlideshow = true;
     	  player.unMute();
