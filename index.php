@@ -60,7 +60,8 @@
 	{
 		while($row = mysqli_fetch_array($result)) 
 		{
-			$videoID = substring($row['videolink'], -11);
+			$videoID = substr($row['videolink'], -11);
+
 			print ("
 				<td> 
 					<a class=\"show-popup\" href=\"javascript: void(0)\" onclick=\" loadVideo('$videoID');\">
@@ -95,7 +96,7 @@
 		
 	}
 	$buffer[] = $rand;
-	$videoID = substring($arrayofvideos[$rand], -11);
+	$videoID = substr($arrayofvideos[$rand], -11);
 	print ("
 			<td>
 			<a class=\"show-popup\"  href=\"javascript: void(0)\" onclick=\" loadVideo('$videoID');\">
